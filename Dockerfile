@@ -2,7 +2,6 @@ FROM node:16
 
 # Set factorio user
 RUN useradd -rm -d /home/factorio -s /bin/bash -u 845 factorio
-USER factorio
 
 # Set the working directory
 WORKDIR /opt/FactorioChatBot
@@ -15,6 +14,7 @@ COPY --chown=factorio:factorio package.json package-lock.json /opt/FactorioChatB
 RUN cd /opt/FactorioChatBot
 RUN npm install
 
+USER factorio
 # Mount the docker volume to the host
 VOLUME /opt/FactorioChatBot
 
